@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./imj/favicon.png" type="image/x-icon">
+    <title>FrontBasic homeworks</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="../../"><span class="headerText">Frontend PROF</span></a>
+    </header>
+    <main class="mainBlock">
+        <div class="block">
+            <h3>Translate JS code to TS:</h3>
+            <div>
+                <h4>JS code:</h4>
+                <div class="code">
+                    function whichNumberIsBigger(a, b) {
+                        <br><br>
+                        if (a === b) { return "Numbers are equal"; } 
+                        <br>
+                        else if (a > b) { return a; } 
+                        <br>
+                        else { return b;}
+                        <br>
+                    }
+                    <br><br>
+                    console.log(whichNumberIsBigger(5, 7));
+                </div>
+            </div>
+
+            <div>
+                <h4>TS code:</h4>
+                <div class="code">
+                    function whichNumberIsBiggerTs(a: number, b: number): number | string {
+                        <br><br>
+                        if (a === b) { return "Numbers are equal"; } 
+                        <br>
+                        else if (a > b) { return a; } 
+                        <br>
+                        else { return b; }
+                        <br>
+                    }
+                    <br><br>
+                    console.log(whichNumberIsBiggerTs(5, 7));
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <h2 id="footer"></h2>
+    </footer>
+</body>
+
+</html>
+<script>
+    document.getElementById('footer').innerHTML = new Date().getFullYear();
+</script>

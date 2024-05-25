@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./imj/favicon.png" type="image/x-icon">
+    <title>FrontBasic homeworks</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="./"><span class="headerText">Frontend PROF</span></a>
+    </header>
+    <main class="mainBlock">
+        <div class="block left">
+            <h3>Chose a homework:</h3>
+            <div class="tasks">
+                <ul>
+                    <li class="task" data-item="0" data-path="task1">Task1</li>
+                </ul>
+            </div>
+        </div>
+        <div class="block right">
+            <h3>Info:</h3>
+            <div id="info" class="info">
+
+            </div>
+            <a href=""><button id="go">Go to TASK</button></a>
+        </div>
+    </main>
+    <footer class="footer">
+        <h2 id="footer"></h2>
+    </footer>
+</body>
+
+</html>
+<script>
+    const readMe = Array("Translate JS code to TS");
+       document.getElementById('footer').innerHTML = new Date().getFullYear();
+    document.querySelectorAll('.task').forEach(el =>
+        el.addEventListener('click', () => {
+            let index = el.dataset.item;
+            document.getElementById("info").innerHTML = "<p>TASK " + (index + 1) + ":</p>";
+            document.getElementById("info").innerHTML += readMe[index];
+            document.getElementById("go").style.visibility = "visible";
+            document.getElementById("go").parentElement.setAttribute("href", "./homeWorks/" + el.dataset.path + "/index.html");
+        })
+    );
+
+</script>
