@@ -41,11 +41,13 @@ button{
     height: 40px;
     text-align: center;
     padding-top: 10px;
+    box-sizing: border-box;
 }
 .footer{
     background-color: black;
     height: 50px;
     width: 100%;
+    box-sizing: border-box;
 }
 .block{
     width: 35vw;
