@@ -20,7 +20,7 @@ li{
 }
 button{
     background-color: #2083df;
-    color: white;
+    color: black;
     cursor: pointer;
     border-radius: 5px;
     visibility: hidden;
@@ -57,7 +57,7 @@ button{
     top:0;
     bottom: 0;
     margin: auto;
-    background-color: white;
+    background-color: black;
     text-align: center;
     color: #2083df;
     overflow-y: auto;
