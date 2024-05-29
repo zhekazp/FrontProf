@@ -37,7 +37,7 @@ button{
 }
 .mainBlock{
     background-image: url(../img/main.jpg);
-    min-height: 500px;
+    min-height: calc(100vh - 100px);
 }
 .header{
     background-color: black;
