@@ -17,7 +17,7 @@ const Champions = (props) => {
 root.render(
     <>
         <header className="header">
-            <a href="./"><span className="headerText">Frontend PROF</span></a>
+            <a href="../../"><span className="headerText">Frontend PROF</span></a>
         </header>
         <main className="mainBlock">
             <div>
