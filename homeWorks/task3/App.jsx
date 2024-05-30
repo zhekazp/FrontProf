@@ -36,8 +36,8 @@ const TaskList = () => {
         setTasks(newState);
     }
     function changeState(index, newValue) {
-        const newState = tasks.map((item, i) => i === index ? newValue : item);
-        setTasks(newState);
+        tasks[index] = newValue;
+        setTasks(tasks);
     }
     return (
         <>
