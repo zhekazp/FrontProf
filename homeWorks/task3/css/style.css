@@ -63,6 +63,7 @@ button{
     top: 20px;
     overflow-y: auto;
     padding: 15px;
+    text-align: center;
 }
 .task{
     text-align: center;
@@ -75,6 +76,13 @@ button{
     position: relative;
     margin-top: 10px;
     width: 70%;
+    left: 15%;
+}
+.addTaskInput{
+    display: block;
+    width: 70%;
+    margin-top: 10px;
+    position: relative;
     left: 15%;
 }
 @media (max-height: 320px) {

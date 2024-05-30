@@ -31,16 +31,31 @@ const Task = ({ name, index, delTask, changeTask }) => {
 
 const TaskList = () => {
     const [tasks, setTasks] = React.useState(["Task 1", "Task 2", "Task3"]);
+    const [newTask, setNewTask] = React.useState("");
+
     function delTask(index) {
         const newState = tasks.filter((item, i) => i !== index);
         setTasks(newState);
     }
+
     function changeState(index, newValue) {
         const newState = tasks.map((item, i) => i === index ? newValue : item);
         setTasks(newState);
     }
+
+    function addTask() {
+        if (newTask !== "") {
+            setTasks([newTask, ...tasks]);
+            setNewTask('');
+        }
+    }
+
     return (
         <>
+            <div>
+                <input onChange={(e) => setNewTask(e.target.value)} value={newTask} className="addTaskInput" type="text" />
+                <button onClick={addTask}>Add Task</button>
+            </div>
             {tasks.map((item, index) => (<Task key={Math.random()}
                 name={item}
                 index={index}
