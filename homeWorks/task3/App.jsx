@@ -44,8 +44,10 @@ const TaskList = () => {
     }
 
     function addTask() {
-        if (newTask !== "") {
+        if (newTask.trim()) {
             setTasks([newTask, ...tasks]);
+            setNewTask('');
+        } else {
             setNewTask('');
         }
     }
