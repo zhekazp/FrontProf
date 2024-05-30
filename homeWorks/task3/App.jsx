@@ -55,7 +55,12 @@ const TaskList = () => {
     return (
         <>
             <div>
-                <input onChange={(e) => setNewTask(e.target.value)} value={newTask} className="addTaskInput" type="text" />
+                <input 
+                onChange={(e) => setNewTask(e.target.value)} 
+                value={newTask} 
+                className="addTaskInput" 
+                type="text"
+                placeHolder="Enter new task..." />
                 <button onClick={addTask}>Add Task</button>
             </div>
             {tasks.map((item, index) => (<Task key={Math.random()}
