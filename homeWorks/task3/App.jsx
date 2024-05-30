@@ -41,7 +41,7 @@ const TaskList = () => {
     }
     return (
         <>
-            {tasks.map((item, index) => (<Task key={Math.floor(Math.random() * 100)}
+            {tasks.map((item, index) => (<Task key={new Date().getTime()}
                 name={item}
                 index={index}
                 delTask={delTask}
