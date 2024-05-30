@@ -60,7 +60,7 @@ const TaskList = () => {
                 value={newTask} 
                 className="addTaskInput" 
                 type="text"
-                placeHolder="Enter new task..." />
+                placeholder="Enter new task..." />
                 <button onClick={addTask}>Add Task</button>
             </div>
             {tasks.map((item, index) => (<Task key={Math.random()}
