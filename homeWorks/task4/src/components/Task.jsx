@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 
 function Task  ({ name, index, delTask, changeTask })  {
     
