@@ -1,6 +1,7 @@
 
 import { useState, useRef } from 'react';
 
+// eslint-disable-next-line react/prop-types
 function Task  ({ name, index, delTask, changeTask })  {
     
     const [isEdit, setIsEdit] = useState(false);
