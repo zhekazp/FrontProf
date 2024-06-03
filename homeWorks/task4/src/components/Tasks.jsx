@@ -4,7 +4,7 @@ import { NewTask } from './NewTask';
 
 function Tasks() {
 
-    const [tasks, setTasks] = useState(["Task 1", "Task 2", "Task3"]);
+    const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
       /*  fetch('https://jsonplaceholder.typicode.com/todos')
