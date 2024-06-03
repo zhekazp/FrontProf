@@ -2,26 +2,26 @@ import { Task } from './Task';
 import { useEffect, useState } from 'react';
 import { NewTask } from './NewTask';
 
-function Tasks() {
+function Tasks(props) {
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-      /*  fetch('https://jsonplaceholder.typicode.com/todos')
-            .then(response => response.json())
-            .then(response => response.map(item => item.title))
-            .then(response => setTasks(response.slice(0,10)))
-            .catch(reject => console.log(reject));*/
-       const fetchTask = async () => {
-        try {
-            const response = await fetch ('https://jsonplaceholder.typicode.com/todos');
-            const data = await response.json();
-            setTasks(data.slice(0, 10).map(e => e.title));
-        } catch (err){
-            console.log(err);
+        /*  fetch('https://jsonplaceholder.typicode.com/todos')
+              .then(response => response.json())
+              .then(response => response.map(item => item.title))
+              .then(response => setTasks(response.slice(0,10)))
+              .catch(reject => console.log(reject));*/
+        const fetchTask = async () => {
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+                const data = await response.json();
+                setTasks(data.filter(item => item.userId === props.userId).map(e => e.title));
+            } catch (err) {
+                console.log(err);
+            }
         }
-       } 
-       fetchTask();    
+        fetchTask();
     }, []);
 
 
@@ -40,7 +40,10 @@ function Tasks() {
     }
 
     return (
-        <>
+        <>  <span onClick={() => { props.changePage(0) }}
+            className='back'>&#129044;
+            TO Users
+        </span>
             <NewTask addTask={addTask} />
             {tasks.map((item, index) => (
                 <Task key={new Date().getTime + index}
