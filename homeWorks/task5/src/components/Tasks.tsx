@@ -2,40 +2,47 @@ import { Task } from './Task';
 import { useEffect, useState } from 'react';
 import { NewTask } from './NewTask';
 
-function Tasks(props) {
+interface ITaskJson {
+    userId: number,
+    id: number,
+    title: string,
+    completed: boolean
+}
 
-    const [tasks, setTasks] = useState([]);
+interface IUserId {
+    userId: number
+    changePage(n : number): void
+}
+
+function Tasks(props: IUserId) {
+
+    const [tasks, setTasks] = useState<string[]>([]);
 
     useEffect(() => {
-        /*  fetch('https://jsonplaceholder.typicode.com/todos')
-              .then(response => response.json())
-              .then(response => response.map(item => item.title))
-              .then(response => setTasks(response.slice(0,10)))
-              .catch(reject => console.log(reject));*/
         const fetchTask = async () => {
             try {
                 const response = await fetch('https://jsonplaceholder.typicode.com/todos');
                 const data = await response.json();
-                setTasks(data.filter(item => item.userId === props.userId).map(e => e.title));
+                setTasks(data.filter((item: ITaskJson) => item.userId === props.userId).map((e: ITaskJson) => e.title));
             } catch (err) {
                 console.log(err);
             }
         }
         fetchTask();
-    }, []);
+    },[]);
 
 
-    function delTask(index) {
-        const newState = tasks.filter((item, i) => i !== index);
+    function delTask(index : number) {
+        const newState = tasks.filter((item, i) => item && i !== index);
         setTasks(newState);
     }
 
-    function changeState(index, newValue) {
+    function changeState(index : number, newValue: string) {
         const newState = tasks.map((item, i) => i === index ? newValue : item);
         setTasks(newState);
     }
 
-    function addTask(newTask) {
+    function addTask(newTask: string) {
         setTasks([newTask, ...tasks]);
     }
 

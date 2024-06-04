@@ -64,6 +64,7 @@ button{
 }
 .left{
     left: 5vw;
+    scrollbar-color: #2083df black;
 }
 .right{
     right: 5vw;
