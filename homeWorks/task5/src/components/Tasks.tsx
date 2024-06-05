@@ -33,7 +33,7 @@ function Tasks(props: IUserId) {
 
 
     function delTask(index : number) {
-        const newState = tasks.filter((item, i) => item && i !== index);
+        const newState = tasks.filter((_, i) =>  i !== index);
         setTasks(newState);
     }
 
