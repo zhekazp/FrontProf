@@ -4,8 +4,8 @@ import { useState } from "react";
 
 function Main() {
 
-    const [page, setPage] = useState<string>("userList");
-    const [userId, setUId] = useState<number>(0);
+    const [page, setPage] = useState("userList");
+    const [userId, setUId] = useState(0);
 
     const changePage = (id : number) => {
         page === "userList" ? setPage("Tasks") : setPage("userList");

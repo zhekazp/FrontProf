@@ -14,7 +14,7 @@ function Task  (props: ITask)  {
 
     const [isEdit, setIsEdit] = useState<boolean>(false);
     
-    const textId = useRef<HTMLTextAreaElement | null>(null);
+    const textId = useRef<HTMLTextAreaElement>(null);
     
     const handleClickSave = () => {
         changeTask(index, textId.current?.value);
