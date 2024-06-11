@@ -18,6 +18,7 @@
             <h3>Chose a homework:</h3>
             <div class="tasks">
                 <ul>
+                    <li class="task" data-item="7" data-path="task8/dist">Task8</li>
                     <li class="task" data-item="6" data-path="task7/dist">Task7</li>
                     <li class="task" data-item="5" data-path="task6/dist">Task6</li>
                     <li class="task" data-item="4" data-path="task5/dist">Task5</li>
@@ -46,7 +47,8 @@
     const readMe = Array("Translate JS code to TS", "Work with React props.",
     "Work with React props, states, refs. Create Task manager app.",
      "Rebuild Task manager app using Vibe - React","Add users to Task manager app",
-     "Practice with React TS","Star Wars project - react");
+     "Practice with React TS","Star Wars project - react",
+    "Create app - add ingredients to a sandwich using redux.");
        document.getElementById('footer').innerHTML = new Date().getFullYear();
     document.querySelectorAll('.task').forEach(el =>
         el.addEventListener('click', () => {
