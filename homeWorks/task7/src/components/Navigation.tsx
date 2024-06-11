@@ -8,8 +8,10 @@ import { PageContext } from "../App";
 function Navigation() {
   const change = useContext(PageContext);
   const changePage = (page: number) => {
-    history.pushState(null, navigation[page], `/${urls[page]}`);
-    change!(page);
+    console.log(page, navigation[page]);
+    
+    history.pushState({page:page}, navigation[page], `/${urls[page]}`);
+    change!.setPage(page);
   }
 
   return (

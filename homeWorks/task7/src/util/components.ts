@@ -11,7 +11,7 @@ import pic8 from "../Images/friend8.jpg";
 import pic9 from "../Images/friend9.jpg";
 
 export const navigation = ['Home', 'About Me', 'Star Wars', 'Contact'];
-export const urls = ['FrontProf/homeWorks/task7/dist/index.html', 'about', 'game', 'contact'];
+export const urls = ['FrontProf/homeWorks/task7/dist/index.html', 'FrontProf/homeWorks/task7/dist/about', 'FrontProf/homeWorks/task7/dist/game', 'FrontProf/homeWorks/task7/dist/contact'];
 
 export const friends =[
     {src:pic1, name:"friend1"},
