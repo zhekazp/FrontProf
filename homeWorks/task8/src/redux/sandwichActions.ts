@@ -1,9 +1,5 @@
 type Action =
- | {type:"addIngredient", food:string, price:number}
- | {type:"clearOrder"}
-
-
+  | { type: "addIngredient"; payLoad: { food: string, price: number } }
+  | { type: "clearOrder" };
 
 export default Action;
-
-
