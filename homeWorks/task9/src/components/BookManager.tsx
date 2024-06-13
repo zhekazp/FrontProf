@@ -27,6 +27,7 @@ export default function BookManager() {
   const getBook=(book:Book)=>{
     setBook({...book});
     setCurrent(book.isbn!);
+    setErrors([0, 0, 0]);
   }
 
   const handleChange = (newValue: Book) => {
