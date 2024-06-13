@@ -32,19 +32,16 @@ export default function libraryReducer(
       };
     case "library/editBook":
     {  
-      const newBooks = state.books.map((item)=>
-        item.isbn === action.payload.isbn ? action.payload : item);
-      
-      
     return {
-      books: newBooks
+      books: state.books.map((item)=>
+        item.isbn === action.payload.isbn ? action.payload : item)
       };
     }
     case "library/removeBook":
     {  
-    const newBooks = state.books.filter((item)=>item.isbn !== action.payload.isbn);
+   
     return {      
-        books: newBooks
+        books:  state.books.filter((item)=>item.isbn !== action.payload.isbn)
       };
     }
     default:

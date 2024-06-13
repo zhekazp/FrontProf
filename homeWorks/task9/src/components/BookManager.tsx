@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Book } from "../redux/libraryAction";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import BookItem from "./BookItem";
-
 
 export default function BookManager() {
   const startState: Book = {
@@ -16,19 +15,19 @@ export default function BookManager() {
 
   const [current, setCurrent] = useState("");
 
-  const [infoAdd, setInfoAdd] = useState({status:false, info:""});
+  const [infoAdd, setInfoAdd] = useState({ status: false, info: "" });
 
   const [errors, setErrors] = useState([0, 0, 0]);
 
   const dispatch = useDispatch();
 
-  const books = useSelector((state:RootState)=>state.library);
+  const books = useSelector((state: RootState) => state.library);
 
-  const getBook=(book:Book)=>{
-    setBook({...book});
+  const getBook = (book: Book) => {
+    setBook({ ...book });
     setCurrent(book.isbn!);
     setErrors([0, 0, 0]);
-  }
+  };
 
   const handleChange = (newValue: Book) => {
     setBook(newValue);
@@ -41,44 +40,27 @@ export default function BookManager() {
       setBook({ ...book, year: Number(newValue) });
     }
   };
-  const showInfo=(info:string)=>{
-    setInfoAdd({status:true,info:info});
+  const showInfo = (info: string) => {
+    setInfoAdd({ status: true, info: info });
     setTimeout(() => {
-      setInfoAdd({status:false,info:""});
+      setInfoAdd({ status: false, info: "" });
     }, 2000);
-  }
-const del = ()=>{
-  if(current === "" ) {
-    showInfo("Choose a book") 
-  }else {
-  showInfo("The book was deleted");
-  dispatch({
-    type: "library/removeBook",
-    payload: { isbn: current },
-  });
-    setCurrent("");
-    setBook(startState);
-}
-}
+  };
+  const del = () => {
+    if (current === "") {
+      showInfo("Choose a book");
+    } else {
+      showInfo("The book was deleted");
+      dispatch({
+        type: "library/removeBook",
+        payload: { isbn: current },
+      });
+      setCurrent("");
+      setBook(startState);
+    }
+  };
 
-const edit = ()=>{
-  if(current === "" ) {
-    showInfo("Choose a book") 
-  }else {
-  showInfo("The book was edited");
-  console.log(current);
-  
-  dispatch({
-    type: "library/editBook",
-    payload: {...book, isbn:current},
-  });
-    setCurrent("");
-    setBook(startState);
-}
-}
-
-  const add = () => {
-    document.getElementsByClassName("buttons")[0].classList.add("hide");
+  const checkInputs = () => {
     const newErrors = [0, 0, 0];
 
     if (book.title.trim().length === 0) {
@@ -90,16 +72,42 @@ const edit = ()=>{
     if (book.year > new Date().getFullYear()) {
       newErrors[2] = 1;
     }
+    return newErrors;
+  };
+
+  const edit = () => {
+    if (current === "") {
+      showInfo("Choose a book");
+    } else {
+      const newErrors = checkInputs();
+      setErrors(newErrors);
+      if (newErrors.reduce((a, b) => a + b) === 0) {
+        showInfo("The book was edited");
+        console.log(current);
+
+        dispatch({
+          type: "library/editBook",
+          payload: { ...book, isbn: current },
+        });
+        setCurrent("");
+        setBook(startState);
+      }
+    }
+  };
+
+  const add = () => {
+    document.getElementsByClassName("buttons")[0].classList.add("hide");
+    const newErrors = checkInputs();
     setErrors(newErrors);
     if (newErrors.reduce((a, b) => a + b) === 0) {
       dispatch({
         type: "library/addBook",
         payload: { title: book.title, author: book.author, year: book.year },
-      });    showInfo("The book was added");
-      setBook(startState);  
+      });
+      showInfo("The book was added");
+      setBook(startState);
     }
-  
-    
+
     document.getElementsByClassName("buttons")[0].classList.remove("hide");
   };
   return (
@@ -108,8 +116,9 @@ const edit = ()=>{
         {infoAdd.status ? <p>{infoAdd.info}</p> : <></>}
       </div>
       <div className="task">
-        {books.books.map((item)=>
-        <BookItem key={item.isbn} getBook={getBook} book={item}/>)}
+        {books.books.map((item) => (
+          <BookItem key={item.isbn} getBook={getBook} book={item} />
+        ))}
       </div>
       <div className="inputs">
         <label htmlFor="title">Title:</label>
@@ -169,7 +178,14 @@ const edit = ()=>{
       </div>
       <div className="buttons">
         <button onClick={() => add()}>Add book</button>
-        <button onClick={() => {setBook(startState);setCurrent("")}}>Clear</button>
+        <button
+          onClick={() => {
+            setBook(startState);
+            setCurrent("");
+          }}
+        >
+          Clear
+        </button>
         <button onClick={edit}>Edit</button>
         <button onClick={del}>DEl</button>
       </div>

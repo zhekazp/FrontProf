@@ -17,21 +17,21 @@ function Main() {
         </div>
         <button
           onClick={() =>
-            dispatch({ type: "addIngredient", payLoad:{food: " bread , ", price: 1 }})
+            dispatch({ type: "addIngredient", payload:{food: " bread , ", price: 1 }})
           }
         >
           Add bread
         </button>
         <button
           onClick={() =>
-            dispatch({ type: "addIngredient", payLoad:{food: " cheese , ", price: 2 }})
+            dispatch({ type: "addIngredient", payload:{food: " cheese , ", price: 2 }})
           }
         >
           Add cheese
         </button>
         <button
           onClick={() =>
-            dispatch({ type: "addIngredient", payLoad:{food: " sausages , ", price: 3 }})
+            dispatch({ type: "addIngredient", payload:{food: " sausages , ", price: 3 }})
           }
         >
           Add sausages

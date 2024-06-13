@@ -7,8 +7,8 @@ const initialState ={
 export default function sandwichReducer(state = initialState, action: Action){
     switch(action.type){
         case "addIngredient":
-        return {totalOrder: state.totalOrder + action.payLoad.food,
-            totalPrice: state.totalPrice + action.payLoad.price
+        return {totalOrder: state.totalOrder + action.payload.food,
+            totalPrice: state.totalPrice + action.payload.price
         }
         case "clearOrder":
         return {totalOrder: "Sandwich : ",
