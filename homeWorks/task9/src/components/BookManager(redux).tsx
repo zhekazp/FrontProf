@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Book } from "../redux/libraryAction";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../redux_ntk/store_rtk";
 import BookItem from "./BookItem";
-import librarySlice from "../redux_ntk/librarySlice";
+import { addBook, editBook, removeBook } from "../redux_ntk/librarySlice";
 
 export default function BookManager() {
   const startState: Book = {
@@ -22,7 +22,7 @@ export default function BookManager() {
 
   const dispatch = useDispatch();
 
-  const books = useSelector((state: RootState) => state.library.books);
+  const books = useSelector((state: RootState) => state.library);
 
   const getBook = (book: Book) => {
     setBook({ ...book });
@@ -52,7 +52,7 @@ export default function BookManager() {
       showInfo("Choose a book");
     } else {
       showInfo("The book was deleted");
-      dispatch(librarySlice.actions.removeBook({ isbn: current }));
+      dispatch(removeBook({ isbn: current }));
       setCurrent("");
       setBook(startState);
     }
@@ -81,8 +81,7 @@ export default function BookManager() {
       setErrors(newErrors);
       if (newErrors.reduce((a, b) => a + b) === 0) {
         showInfo("The book was edited");
-        console.log(current);
-        dispatch(librarySlice.actions.editBook({ ...book, isbn: current }));
+        dispatch(editBook({ ...book, isbn: current }));
         setCurrent("");
         setBook(startState);
       }
@@ -94,7 +93,7 @@ export default function BookManager() {
     const newErrors = checkInputs();
     setErrors(newErrors);
     if (newErrors.reduce((a, b) => a + b) === 0) {
-      dispatch(librarySlice.actions.addBook({ title: book.title, author: book.author, year: book.year }));
+      dispatch(addBook({ title: book.title, author: book.author, year: book.year }));
       showInfo("The book was added");
       setBook(startState);
     }
@@ -107,7 +106,7 @@ export default function BookManager() {
         {infoAdd.status ? <p>{infoAdd.info}</p> : <></>}
       </div>
       <div className="task">
-        {books.map((item) => (
+        {books.books.map((item) => (
           <BookItem key={item.isbn} getBook={getBook} book={item} />
         ))}
       </div>
