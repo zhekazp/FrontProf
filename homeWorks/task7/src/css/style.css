@@ -44,7 +44,19 @@ li{
         margin-right: 20px;
     }
 
-
+textarea{
+    width: 250px;
+}
+label{
+    margin-right: 20px;
+}
+button{
+    height: 30px;
+    background-color: #eedb00;
+    border-radius: 15px;
+    width: 100px;
+    cursor: pointer;
+}
 li, h1 {
     text-align: center;
 }
@@ -104,4 +116,11 @@ img {
     letter-spacing: 0.2em;
     line-height: 1.6;
     text-align: justify;
+}
+.userData{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.error{
+    color:red;
 }
